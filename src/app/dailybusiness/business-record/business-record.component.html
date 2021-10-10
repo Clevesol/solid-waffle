@@ -1,0 +1,88 @@
+<div class="grid  h-20rem">
+    
+    <p-card>
+        <div class="col-12">
+
+            <div class="flex flex-row flex-wrap card-container yellow-container">
+                
+               
+                
+                <div class="flex ">
+                    <div class="col-6 p-md-4">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                            <p-dropdown  [options]="stylists" [(ngModel)]="selectedStylist" placeHolder="Stylist" optionLabel="flname" ></p-dropdown>    
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex pl-2">
+                    <div class="col-6 p-md-4">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                            <p-dropdown [options]="customers" [(ngModel)]="selectedCustomer" placeHolder="Customer" optionLabel="flname" ></p-dropdown>    
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex pl-2">
+                    <div class="col-10 p-md-4">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><i class="pi pi-dollar"></i></span>
+                            <p-inputNumber [(ngModel)]="amount" mode="decimal" locale="en-LK" placeholder="Amount"></p-inputNumber>        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex ">
+                    <div class="col-10 p-md-4">
+                        <div class="p-inputgroup">
+                            <p-button pRipple label="Save" (click)="saveInvoice()" class="p-button-rounded" icon="pi pi-check-circle" iconPos="right" ></p-button>   
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="flex mt-6 min-h-full">
+                  
+                    
+                </div>
+
+                <div class="col-12 ml-1">
+                    <div class="col-12">
+                        <div class="col-4 col-offset-5">
+                            <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()" styleClass="p-button-text"></p-button>
+                            <p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
+                            <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" styleClass="p-button-text"></p-button>    
+                        </div>
+                    </div>
+                    <p-progressSpinner *ngIf="!data_loaded">loading...</p-progressSpinner>
+                    <div *ngIf="data_loaded" class="col-12">
+                        <p-table class="w-full" [value]="invoices" [paginator]="true" [rows]="rows" [showCurrentPageReport]="true" [(first)]="first" responsiveLayout="scroll"
+                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10,15]">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Customer</th>
+                                <th>Stylist</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </ng-template>
+                        <p-confirmPopup></p-confirmPopup>
+                        <ng-template pTemplate="body" let-invoice let-rowIndex>
+                            <tr>
+                                <td>{{invoice.customer}}</td>
+                                <td>{{invoice.stylist}}</td>
+                                <td>{{invoice.amount}}</td>
+                                <td><p-button pButton  icon="pi pi-file-excel" (click)="removeRecord($event,rowIndex)" [disabled]="isLastPage()" class="p-button-rounded p-button-secondary"></p-button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </p-card>
+</div>

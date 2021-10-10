@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "quick-saloon": {
+      "hosting": {
+        "primengapp": [
+          "quick-saloon"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<p-dialog header="Manual Business record" position="center" [(visible)]="show_new_manual_record_modal">
+    <div class="p-field">
+        <label for="amt">Amount</label>
+        <input id="amt" type="number" pInputText> 
+    </div>
+    <div class="p-field">
+        <label for="stylist">Stylist</label>
+        <p-dropdown [options]="services" [(ngModel)]="selectedService" optionLabel="name" ></p-dropdown>
+    </div>
+    <div class="p-field">
+        <label for="srvs">Service</label>
+        <input id="srvs" type="text" pInputText> 
+    </div>
+</p-dialog>

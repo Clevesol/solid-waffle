@@ -1,14 +1,11 @@
-<div class="flex   min-h-screen">
+<div class="flex p-0 m-0  min-h-screen">
    
         
-        <div class="w-5  bg-primary-reverse flex-column pt-8 pr-2">
+        <div class="w-5 mt-8  bg-primary-reverse flex-column pt-8 pr-2">
             <!-- style="background-image: url('../../assets/bg.jpeg');" -->
 
-            <div class="w-12">
-                <img src="../../assets/svg.svg" width="150"/>
-            </div>
-
-            <div class="card bg-no-repeat w-8 h-full pt-8 pl-6"  >
+         
+            <div class="card bg-no-repeat w-8 h-full pt-8  pl-6"  >
                 
                 <p-fieldset style="color: red;" legend="Login">
 
@@ -27,18 +24,16 @@
                     </div>
         
                     <!-- <button pButton pRipple type="button" label="Login" class="p-button-rounded"></button> -->
-                    <p-button pRipple label="Sign in" class="p-button-rounded" icon="pi pi-sign-in" iconPos="right" [loading]="loading[1]" (onClick)="load(1)"></p-button>
+                    <p-button pRipple label="Sign in" class="p-button-rounded" icon="pi pi-sign-in" iconPos="right" [loading]="loading[1]" (onClick)="login()"></p-button>
                 </p-fieldset>
             
                 
                
                 <div class="w-12 h-3rem align-content-center align-items-center align-self-center justify-content-center">
 
-                <p-button label="Forgot password?." styleClass="p-button-link"></p-button>
-                <p-divider class="text-xs" layout="vertical">
-                    <b>OR</b>
-                </p-divider>
-                <p-button label="Create account and login." styleClass="p-button-link"></p-button>
+                <p-button label="Forgot password?" styleClass="p-button-link"></p-button>
+               
+                <p-button label="Click to create an account." styleClass="p-button-link"></p-button>
                         
                 </div>
                    
@@ -48,13 +43,14 @@
         </div>
 
 
-        <div class="w-7  flex-column bg-green-100">
-            <div class="w-6 pl-8 pt-8">
+        <div class="w-7 p-0 flex-column bg-green-100">
+            <div class="mt-8"></div>
+            <div class="w-6 pl-8 p-0 mt-8">
                 <img src="../../assets/bg.jpeg" />
             </div>
            
         </div>
 
-    
+        <p-toast position="top-right"></p-toast>
 </div>
 

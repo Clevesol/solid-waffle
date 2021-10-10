@@ -8,8 +8,8 @@ import { PrimeNGConfig } from 'primeng/api';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'primengapp';
-  authenticated:boolean = false;
+  title = 'Happy Trimming';
+  authenticated:boolean = true;
 
   constructor(private primengConfig: PrimeNGConfig) {}
 

@@ -11,13 +11,52 @@ import {ProgressBarModule} from 'primeng/progressbar';
 import { HomeComponent } from './home/home.component';
 import {MenubarModule} from 'primeng/menubar';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
-import { CustomersComponent } from './customers/customers.component';
 import { LoginComponent } from './login/login.component';
 import {InputTextModule} from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import {CardModule} from 'primeng/card';
 import {FieldsetModule} from 'primeng/fieldset';
 import {DividerModule} from 'primeng/divider';
+import { NewuserComponent } from './newuser/newuser.component';
+import { DailybusinessComponent } from './dailybusiness/dailybusiness.component';
+import {ChartModule} from 'primeng/chart';
+import {PanelModule} from 'primeng/panel';
+import {SplitButtonModule} from 'primeng/splitbutton';
+import {DialogModule} from 'primeng/dialog';
+import {DropdownModule} from 'primeng/dropdown';
+import {InputNumberModule} from 'primeng/inputnumber';
+import {TableModule} from 'primeng/table';
+
+
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../environments/environment';
+import { PosComponent } from './pos/pos.component';
+
+
+//calendar module
+import {CalendarModule} from 'primeng/calendar';
+import {FullCalendarModule} from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { ManualBusinessRecordModalComponent } from './utils/manual-business-record-modal/manual-business-record-modal.component';
+import { BusinessRecordComponent } from './dailybusiness/business-record/business-record.component';
+import { StylistsComponent } from './dailybusiness/stylists/stylists.component';
+import { CustomersComponent } from './dailybusiness/customers/customers.component';
+import {ConfirmPopupModule} from 'primeng/confirmpopup';
+
+import {ConfirmationService,MessageService} from 'primeng/api';
+import { DailyOverviewComponent } from './dailybusiness/daily-overview/daily-overview.component'
+import { AuthGuardGuard } from './auth-guard.guard';
+
+import {ToastModule} from 'primeng/toast';
+
+
+FullCalendarModule.registerPlugins([
+  dayGridPlugin,
+  timeGridPlugin,
+  interactionPlugin
+]);
 
 @NgModule({
   declarations: [
@@ -25,7 +64,14 @@ import {DividerModule} from 'primeng/divider';
     NavComponent,
     HomeComponent,
     CustomersComponent,
-    LoginComponent
+    LoginComponent,
+    NewuserComponent,
+    DailybusinessComponent,
+    PosComponent,
+    ManualBusinessRecordModalComponent,
+    BusinessRecordComponent,
+    StylistsComponent,
+    DailyOverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -37,13 +83,25 @@ import {DividerModule} from 'primeng/divider';
     SlideMenuModule,
     InputTextModule,
     ButtonModule,
+    SplitButtonModule,
     ProgressSpinnerModule,
     ProgressBarModule,
     CardModule,
     FieldsetModule,
-    DividerModule
+    DividerModule,
+    ChartModule,FullCalendarModule,
+    CalendarModule,
+    PanelModule,
+    DialogModule,
+    DropdownModule,
+    InputNumberModule,
+    TableModule,
+
+    ToastModule,
+    ConfirmPopupModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [],
+  providers: [ChartModule, ConfirmationService,AuthGuardGuard,MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
