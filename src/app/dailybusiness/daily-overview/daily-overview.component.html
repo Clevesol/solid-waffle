@@ -1,6 +1,49 @@
-<div class="w-7 ">
-    <div class="card">
-        <p-progressSpinner *ngIf="!visible"></p-progressSpinner>
-        <p-chart *ngIf="visible" type="pie" [data]="data"   ></p-chart>
+<div class="grid ml-3">
+    <div class="w-7 ">
+        <div class="card">
+            <p-progressSpinner *ngIf="!visible"></p-progressSpinner>
+            <p-chart *ngIf="visible" type="pie" [data]="data"   ></p-chart>
+        </div>
+    </div>
+    <div class="w-5 mt-4">
+        <div class="w-12">
+            <h3>Overview</h3>
+        </div>
+        <div class="w-12">
+            <p-scrollPanel >
+              
+                    <div  *ngFor="let r of data.labels; index as i" class="col-12 m-0 p-0">
+    
+                        <div class="grid">
+                            <div class="col-6">
+                                <p class="mt-1 p-text-bold">{{r}}</p>
+                            </div>
+                            <div class="col-3">
+                                <h4 class="mt-1">{{data.datasets[0].data[i]}}</h4>
+                            </div>
+                            <div class="col-3 mt-0 ">
+                                <p-knob [strokeWidth]="4" [ngModel]="data.percentage(i)" [size]="35" valueTemplate="{{data.percentage(i)}}" readOnly="true"></p-knob>
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                
+            </p-scrollPanel>
+            
+        </div>
+        <div class="col-12">
+            <div class="col-4 col-offset-8">
+                <div class="grid">
+                    <div class="col-5 col-offset-1">
+                        <h5>Total</h5>
+                    </div>
+                    <div class="col-4 ">
+                        <h3>{{data.total()}}</h3>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
     </div>
 </div>

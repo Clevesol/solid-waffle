@@ -55,13 +55,7 @@ export class DailybusinessComponent implements OnInit {
     }
 
     logout():void{
-        this.authService.logout()
-
-        this.authService.getLogState().subscribe(s => {
-            if(!this.authService.isAuthenticated()){
-                this.router.navigate(['login'])
-            }
-        });
+        
     }
     
     ngOnInit() {

@@ -26,22 +26,7 @@ export class DailyOverviewComponent implements OnInit {
   visible:boolean = false;
   constructor(private generalService:GeneralService) {
 
-    this.data = {
-      labels: ['Jude','Perera'],
-      datasets: [
-          {   
-              data: [50, 300],
-              backgroundColor: [
-                  "#42A5F5",
-                  "#66BB6A"
-              ],
-              hoverBackgroundColor: [
-                  "#64B5F6",
-                  "#81C784"
-              ]
-          }
-      ]
-  };
+    
 
 
     this.generalService.getDataLoadingInformer().subscribe((state:boolean)=> {
@@ -84,7 +69,7 @@ export class DailyOverviewComponent implements OnInit {
 
    }
 
-  data:dataClass;
+  public data:dataClass = new dataClass([],[]);
 
   ngOnInit(): void {
   }
@@ -93,13 +78,54 @@ export class DailyOverviewComponent implements OnInit {
 
 }
 
-interface dataClass {
-  labels:string[],
+class dataClass {
+  labels:string[];
   datasets: pieData[]
+
+  
+
+  constructor( labels:string[],
+    datasets: pieData[]
+  ){
+    this.labels = labels;
+    this.datasets = datasets;
+  }
+
+    totals = 0;
+
+   public total():number{
+      let totals = 0;
+      this.datasets[0].data.forEach(num => {
+        totals += num;
+      });
+
+      this.totals = totals;
+      
+
+      return totals;
+    }
+
+    percentage(index:number):number{
+      let i = (this.datasets[0].data[index]/this.totals)*100;
+      let prc = parseInt(i.toString());
+        return prc;
+    }
 }
 
-interface pieData{
-  data:number[], 
-  backgroundColor:string[],
+class pieData{
+ 
+  data:number[]; 
+  backgroundColor:string[];
   hoverBackgroundColor:string[]
+  
+
+  constructor(data:number[], 
+    backgroundColor:string[],
+    hoverBackgroundColor:string[]){
+      this.data = data;
+      this.backgroundColor = backgroundColor;
+      this.hoverBackgroundColor = hoverBackgroundColor;
+      
+  }
+
 }

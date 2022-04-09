@@ -69,7 +69,7 @@
                                 <td>{{invoice.lname}}</td>
                                 <td>{{invoice.flname}}</td>
                                 <td>{{invoice.number}}</td>
-                                <td><p-button pButton  icon="pi pi-file-excel" (click)="removeRecord($event,rowIndex)" [disabled]="isLastPage()" class="p-button-rounded p-button-secondary"></p-button>
+                                <td><button pButton pRipple  icon="pi pi-trash" (click)="removeRecord($event,rowIndex)" [disabled]="isLastPage()" class="p-button-rounded p-button-secondary"></button>
                                 </td>
                             </tr>
                         </ng-template>

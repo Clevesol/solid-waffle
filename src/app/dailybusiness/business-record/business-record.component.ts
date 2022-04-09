@@ -45,6 +45,7 @@ export class BusinessRecordComponent implements OnInit {
     })
 
     this.generalService.bringServiceTypes().subscribe((s:any) => {
+      console.log(s)
         this.services = s;
     });
 
@@ -82,10 +83,13 @@ export class BusinessRecordComponent implements OnInit {
       stylist:this.selectedStylist.flname,
       amount:this.amount,
       customerId: this.selectedCustomer.id,
-      stylistId:this.selectedStylist.id
+      stylistId:this.selectedStylist.id,
+      serviceType:this.selectedService.id,
+      createdAt: new Date()
     } as Invoice;
 
     
+    console.log(invoice);
     this.generalService.addInvoice(invoice);
     this.amount = 0;
     this.generalService.markDataloading();

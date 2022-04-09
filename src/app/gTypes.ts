@@ -9,6 +9,7 @@ export class Global{
 
 export  interface Service{
 
+    id:string;
     name:string;
     charge:number;
     service_unit:string;
@@ -22,6 +23,8 @@ export interface Invoice{
     stylist:string;
     customerId:string,
     stylistId:string;
+    serviceType:string;
+    createdAt:Date;
 }
 
 export interface Stylist{

@@ -44,12 +44,16 @@ import { BusinessRecordComponent } from './dailybusiness/business-record/busines
 import { StylistsComponent } from './dailybusiness/stylists/stylists.component';
 import { CustomersComponent } from './dailybusiness/customers/customers.component';
 import {ConfirmPopupModule} from 'primeng/confirmpopup';
+import {KnobModule} from 'primeng/knob';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
 
 import {ConfirmationService,MessageService} from 'primeng/api';
 import { DailyOverviewComponent } from './dailybusiness/daily-overview/daily-overview.component'
 import { AuthGuardGuard } from './auth-guard.guard';
 
 import {ToastModule} from 'primeng/toast';
+import { LogoutComponent } from './logout/logout.component';
+import { MobileComponent } from './mobile/mobile.component';
 
 
 FullCalendarModule.registerPlugins([
@@ -71,7 +75,9 @@ FullCalendarModule.registerPlugins([
     ManualBusinessRecordModalComponent,
     BusinessRecordComponent,
     StylistsComponent,
-    DailyOverviewComponent
+    DailyOverviewComponent,
+    LogoutComponent,
+    MobileComponent
   ],
   imports: [
     BrowserModule,
@@ -89,7 +95,9 @@ FullCalendarModule.registerPlugins([
     CardModule,
     FieldsetModule,
     DividerModule,
-    ChartModule,FullCalendarModule,
+    ChartModule,
+    FullCalendarModule,
+    ScrollPanelModule,
     CalendarModule,
     PanelModule,
     DialogModule,
@@ -99,6 +107,7 @@ FullCalendarModule.registerPlugins([
 
     ToastModule,
     ConfirmPopupModule,
+    KnobModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [ChartModule, ConfirmationService,AuthGuardGuard,MessageService],

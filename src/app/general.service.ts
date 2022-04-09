@@ -59,12 +59,29 @@ export class GeneralService {
 
 
   public bringInvoices():Observable<Invoice>{
-    return this.mapSnaps(Global.invoices);
+    return this.mapSnapsDateFilter(Global.invoices, new Date().toLocaleDateString());
   }
 
   private mapSnaps(collection:string):Observable<any>{
 
+    
     return this.db.collection(collection).snapshotChanges().pipe(
+      map((snaps:any) => {
+        return snaps.map((snap:any) => {
+          return <any>{
+            id: snap.payload.doc.id,
+            ...snap.payload.doc.data()
+          }
+        })
+      })
+    )
+  }
+
+  private mapSnapsDateFilter(collection:string, date:string):Observable<any>{
+
+
+    return this.db.collection(collection, ref => ref.where('createdAt','>', new Date(date)
+    )).snapshotChanges().pipe(
       map((snaps:any) => {
         return snaps.map((snap:any) => {
           return <any>{
